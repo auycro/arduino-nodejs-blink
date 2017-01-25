@@ -1,0 +1,23 @@
+{
+  "name": "arduino-nodejs-blink",
+  "version": "1.0.0",
+  "description": "arduino with nodejs",
+  "main": "TestConsole.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auycro/arduino-nodejs-blink.git"
+  },
+  "author": "auycro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/auycro/arduino-nodejs-blink/issues"
+  },
+  "homepage": "https://github.com/auycro/arduino-nodejs-blink#readme",
+  "dependencies": {
+    "keypress": "^0.2.1",
+    "serialport": "^4.0.7"
+  }
+}
