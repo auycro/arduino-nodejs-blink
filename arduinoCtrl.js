@@ -1,29 +1,34 @@
 //Add Lib
-var srListPort = require("serialport"); //.SerialPort
-var SerialPort = require("serialport").SerialPort 
+//var srListPort = require("serialport"); //.SerialPort
+var SerialPort = require("serialport");
 
 //Body
-srListPort.list(function (err, ports) {
+SerialPort.list(function (err, ports) {
   ports.forEach(function(port) {
-    console.log(port.comName);
-    console.log(port.pnpId);
-    console.log(port.manufacturer);
+    console.log("PrintPort: ",port.comName,port.pnpId,port.manufacturer);
   });
 });
 
+/*
 var serialPort = new SerialPort("/dev/cu.wchusbserial1410", {
 	baudrate: 9600,
 	// defaults for Arduino serial communication
-	dataBits: 8, 
-	parity: 'none', 
-	stopBits: 1, 
-	flowControl: false 
+	dataBits: 8,
+	parity: 'none',
+	stopBits: 1,
+	flowControl: false
+});
+*/
+
+var serialPort = new SerialPort("/dev/cu.wchusbserial1410", function(err){
+  if (err)
+    console.log(err);
 });
 
 var i = 0;
 var sendcmd = '';
 
-serialPort.on('data', function(data) { 
+serialPort.on('data', function(data) {
 	console.log('received: '+data.toString());
 	switch(data.toString()) {
 		case 'hello':
@@ -31,7 +36,7 @@ serialPort.on('data', function(data) {
 			break;
 		case 'finish':
 			process.exit(1);
-			break;	
+			break;
 		default:
 			i++;
 			sendcmd = i;
